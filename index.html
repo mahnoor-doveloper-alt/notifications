@@ -73,7 +73,7 @@
             right: -300px;
             width: 100%;
             max-width: 300px;
-            height: 70vh;
+            height: 1vh;
             background-color: white;
             box-shadow: -5px 0 15px rgba(0,0,0,0.1);
             transition: right 0.3s ease;
@@ -127,11 +127,11 @@
             flex: 1;
             overflow-y: auto;
             padding: 8px 0;
-            max-height: 55vh;
+            max-height: 37vh;
         }
 
         .notification-list.expanded {
-            max-height: 60vh;
+            max-height: 56vh;
         }
 
         .notification-item {
@@ -201,7 +201,7 @@
         }
 
         .panel-footer {
-            padding: 10px 12px;
+            padding: 5px 12px;
             border-top: 1px solid #eee;
             text-align: center;
             flex-shrink: 0;
@@ -211,13 +211,14 @@
             background-color: #4a6cf7;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 4px 8px;
+            border-radius: 3px;
             cursor: pointer;
             font-weight: 600;
             transition: background 0.3s;
             width: 100%;
-            font-size: 13px;
+            font-size: 12px;
+            height: 28px;
         }
 
         .view-all-btn:hover {
@@ -258,7 +259,10 @@
             .notification-panel {
                 max-width: 280px;
                 right: -280px;
-                height: 80vh;
+                height: auto; 
+    max-height: 90vh;  /* keep a max-height so it doesn’t overflow */
+    display: flex;
+    flex-direction: column;
                 top: 50%;
                 transform: translateY(-50%);
             }
@@ -288,6 +292,16 @@
             .notification-list {
                 max-height: 65vh;
             }
+            
+            .panel-footer {
+                padding: 4px 10px;
+            }
+            
+            .view-all-btn {
+                padding: 3px 6px;
+                font-size: 11px;
+                height: 26px;
+            }
         }
 
         /* Tablet Styles (768px to 1024px) */
@@ -305,7 +319,7 @@
             .notification-panel {
                 max-width: 280px;
                 right: -280px;
-                height: 60vh;
+                
                 top: 50%;
             }
             
@@ -338,6 +352,16 @@
             .notification-list.expanded {
                 max-height: 50vh;
             }
+            
+            .panel-footer {
+                padding: 4px 12px;
+            }
+            
+            .view-all-btn {
+                padding: 3px 7px;
+                font-size: 11px;
+                height: 26px;
+            }
         }
 
         /* Desktop Styles (1025px and above) */
@@ -350,11 +374,24 @@
             .notification-panel {
                 max-width: 300px;
                 right: -300px;
-                height: 70vh;
+                height: auto; 
+    max-height: 90vh;  /* keep a max-height so it doesn’t overflow */
+    display: flex;
+    flex-direction: column;
             }
             
             .notification-panel.active {
                 right: 30px;
+            }
+            
+            .panel-footer {
+                padding: 5px 12px;
+            }
+            
+            .view-all-btn {
+                padding: 4px 8px;
+                font-size: 12px;
+                height: 28px;
             }
         }
     </style>
