@@ -9,11 +9,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f5f5f7;
+            background-color: white;
             min-height: 100vh;
             padding: 20px;
         }
@@ -21,203 +21,208 @@
         .notification-container {
             position: fixed;
             top: 20px;
-            right: 20px;
-            z-index: 1000;
+            left: 20px;
+            z-index: 100;
         }
 
         .notification-icon {
             position: relative;
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 12px;
+            width: 50px;
+            height: 50px;
+            background-color: #f0f4ff;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 2px solid #e0e7ff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .notification-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            background-color: #e0e7ff;
+            transform: scale(1.05);
         }
 
         .notification-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: white;
+            width: 24px;
+            height: 24px;
+            fill: #4a6cf7;
         }
 
         .notification-badge {
             position: absolute;
-            top: -6px;
-            right: -6px;
-            background: #ff3b30;
+            top: -5px;
+            right: -5px;
+            background-color: #ff4757;
             color: white;
-            border-radius: 10px;
-            width: 18px;
-            height: 18px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 10px;
-            font-weight: 600;
-            border: 2px solid white;
+            font-size: 12px;
+            font-weight: bold;
         }
 
         .notification-panel {
             position: fixed;
-            top: 0;
-            right: -100%;
-            width: 90%;
-            max-width: 380px;
-            height: 100vh;
-            background: white;
-            box-shadow: -4px 0 20px rgba(0,0,0,0.1);
-            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            z-index: 1001;
+            top: 50%;
+            right: -300px;
+            width: 100%;
+            max-width: 300px;
+            height: 70vh;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1000;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+            transform: translateY(-50%);
+            border-radius: 10px;
         }
 
         .notification-panel.active {
-            right: 0;
+            right: 20px;
         }
 
         .panel-header {
-            padding: 20px 16px 16px;
-            background: white;
-            border-bottom: 1px solid #e5e5e7;
+            padding: 12px 15px;
+            background-color: #4a6cf7;
+            color: white;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-shrink: 0;
         }
 
         .panel-header h2 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1d1d1f;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .close-btn {
-            background: #f5f5f7;
+            background: none;
             border: none;
-            color: #1d1d1f;
+            color: white;
             font-size: 20px;
             cursor: pointer;
-            width: 32px;
-            height: 32px;
+            width: 25px;
+            height: 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 8px;
-            transition: all 0.2s;
+            border-radius: 50%;
+            transition: background 0.2s;
         }
 
         .close-btn:hover {
-            background: #e5e5e7;
+            background-color: rgba(255,255,255,0.2);
         }
 
         .notification-list {
             flex: 1;
             overflow-y: auto;
             padding: 8px 0;
+            max-height: 55vh;
+        }
+
+        .notification-list.expanded {
+            max-height: 60vh;
         }
 
         .notification-item {
-            padding: 16px;
+            padding: 10px 12px;
+            border-bottom: 1px solid #eee;
             display: flex;
             align-items: flex-start;
             cursor: pointer;
             transition: background 0.2s;
-            border-bottom: 1px solid #f5f5f7;
         }
 
-        .notification-item:last-child {
-            border-bottom: none;
+        .notification-item.hidden {
+            display: none;
+        }
+
+        .notification-item.visible {
+            display: flex;
         }
 
         .notification-item:hover {
-            background: #fafafa;
+            background-color: #f9f9f9;
         }
 
         .notification-item.unread {
-            background: #f0f7ff;
-            border-left: 3px solid #007AFF;
+            background-color: #f0f7ff;
         }
 
         .notification-icon-small {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background-color: #e0e7ff;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 12px;
+            margin-right: 10px;
             flex-shrink: 0;
         }
 
         .notification-icon-small svg {
-            width: 18px;
-            height: 18px;
-            fill: white;
+            width: 16px;
+            height: 16px;
+            fill: #4a6cf7;
         }
 
         .notification-content {
             flex: 1;
-            min-width: 0;
         }
 
         .notification-title {
             font-weight: 600;
-            margin-bottom: 4px;
-            color: #1d1d1f;
-            font-size: 15px;
-            line-height: 1.3;
+            margin-bottom: 3px;
+            color: #333;
+            font-size: 13px;
         }
 
         .notification-message {
-            font-size: 14px;
+            font-size: 12px;
             color: #666;
-            line-height: 1.4;
-            margin-bottom: 4px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            line-height: 1.3;
         }
 
         .notification-time {
-            font-size: 12px;
-            color: #8e8e93;
-            font-weight: 500;
+            font-size: 10px;
+            color: #999;
+            margin-top: 3px;
         }
 
         .panel-footer {
-            padding: 12px 16px;
-            border-top: 1px solid #e5e5e7;
-            background: white;
+            padding: 5px 12px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            flex-shrink: 0;
         }
 
         .view-all-btn {
-            background: transparent;
-            color: #007AFF;
-            border: 1.5px solid #007AFF;
-            padding: 10px 16px;
-            border-radius: 10px;
+            background-color: #4a6cf7;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 3px;
             cursor: pointer;
             font-weight: 600;
-            font-size: 15px;
+            transition: background 0.3s;
             width: 100%;
-            transition: all 0.2s;
+            font-size: 12px;
+            height: 28px;
         }
 
         .view-all-btn:hover {
-            background: #007AFF;
-            color: white;
+            background-color: #3a5bd9;
         }
 
         .overlay {
@@ -226,10 +231,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.4);
+            background-color: rgba(0,0,0,0.5);
             z-index: 999;
             display: none;
-            backdrop-filter: blur(2px);
         }
 
         .overlay.active {
@@ -240,71 +244,148 @@
             display: none;
         }
 
-        /* Mobile First Design */
-        @media (max-width: 768px) {
+        /* Mobile Styles (up to 767px) */
+        @media (max-width: 767px) {
             .notification-container {
-                top: 16px;
-                right: 16px;
+                top: 15px;
+                left: 15px;
             }
             
             .notification-icon {
-                width: 48px;
-                height: 48px;
-                border-radius: 14px;
+                width: 45px;
+                height: 45px;
             }
             
             .notification-panel {
-                width: 100%;
-                max-width: none;
-                border-radius: 0;
+                max-width: 280px;
+                right: -280px;
+                height: 80vh;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            
+            .notification-panel.active {
+                right: 15px;
+            }
+            
+            .notification-item {
+                padding: 8px 10px;
             }
             
             .panel-header {
-                padding: 24px 20px 20px;
+                padding: 10px 12px;
             }
             
             .panel-header h2 {
-                font-size: 22px;
-            }
-            
-            .notification-item {
-                padding: 20px;
+                font-size: 15px;
             }
             
             .notification-icon-small {
-                width: 44px;
-                height: 44px;
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+            }
+            
+            .notification-list {
+                max-height: 65vh;
+            }
+            
+            .panel-footer {
+                padding: 4px 10px;
+            }
+            
+            .view-all-btn {
+                padding: 3px 6px;
+                font-size: 11px;
+                height: 26px;
             }
         }
 
-        /* Tablet Styles */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .notification-panel {
-                max-width: 420px;
+        /* Tablet Styles (768px to 1024px) */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .notification-container {
+                top: 25px;
+                left: 25px;
             }
             
-            .panel-header {
-                padding: 24px 20px;
+            .notification-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .notification-panel {
+                max-width: 280px;
+                right: -280px;
+                height: 60vh;
+                top: 50%;
+            }
+            
+            .notification-panel.active {
+                right: 25px;
             }
             
             .notification-item {
-                padding: 18px 20px;
+                padding: 9px 11px;
+            }
+            
+            .panel-header {
+                padding: 11px 13px;
+            }
+            
+            .panel-header h2 {
+                font-size: 15px;
+            }
+            
+            .notification-icon-small {
+                width: 30px;
+                height: 30px;
+                margin-right: 9px;
+            }
+            
+            .notification-list {
+                max-height: 45vh;
+            }
+            
+            .notification-list.expanded {
+                max-height: 50vh;
+            }
+            
+            .panel-footer {
+                padding: 4px 12px;
+            }
+            
+            .view-all-btn {
+                padding: 3px 7px;
+                font-size: 11px;
+                height: 26px;
             }
         }
 
-        /* Desktop Styles */
+        /* Desktop Styles (1025px and above) */
         @media (min-width: 1025px) {
+            .notification-container {
+                top: 30px;
+                left: 30px;
+            }
+            
             .notification-panel {
-                max-width: 380px;
-                top: 50%;
-                transform: translateY(-50%);
-                height: 80vh;
-                border-radius: 16px;
-                right: -380px;
+                max-width: 300px;
+                right: -300px;
+                height: 70vh;
             }
             
             .notification-panel.active {
                 right: 30px;
+            }
+            
+            .panel-footer {
+                padding: 5px 12px;
+            }
+            
+            .view-all-btn {
+                padding: 4px 8px;
+                font-size: 12px;
+                height: 28px;
             }
         }
     </style>
@@ -330,30 +411,40 @@
             <div class="notification-item unread">
                 <div class="notification-icon-small">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
                     </svg>
                 </div>
                 <div class="notification-content">
                     <div class="notification-title">New Message</div>
-                    <div class="notification-message">You have a new message from Sarah Johnson about your project deadline.</div>
-                    <div class="notification-time">2 min ago</div>
+                    <div class="notification-message">You have received a new message from John Doe.</div>
+                    <div class="notification-time">5 minutes ago</div>
                 </div>
             </div>
-            
             <div class="notification-item unread">
+                <div class="notification-icon-small">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">Order Shipped</div>
+                    <div class="notification-message">Your order #12345 has been shipped.</div>
+                    <div class="notification-time">1 hour ago</div>
+                </div>
+            </div>
+            <div class="notification-item">
                 <div class="notification-icon-small">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Order Shipped</div>
-                    <div class="notification-message">Your order #ORD-78945 has been shipped and will arrive tomorrow.</div>
-                    <div class="notification-time">1 hour ago</div>
+                    <div class="notification-title">Task Completed</div>
+                    <div class="notification-message">Profile update completed.</div>
+                    <div class="notification-time">2 hours ago</div>
                 </div>
             </div>
-            
-            <div class="notification-item">
+            <div class="notification-item hidden">
                 <div class="notification-icon-small">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
@@ -361,24 +452,10 @@
                 </div>
                 <div class="notification-content">
                     <div class="notification-title">New Review</div>
-                    <div class="notification-message">Alex Thompson left a 5-star review for your service.</div>
-                    <div class="notification-time">3 hours ago</div>
-                </div>
-            </div>
-            
-            <div class="notification-item hidden">
-                <div class="notification-icon-small">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
-                    </svg>
-                </div>
-                <div class="notification-content">
-                    <div class="notification-title">Payment Received</div>
-                    <div class="notification-message">Payment of $249.99 has been successfully processed.</div>
+                    <div class="notification-message">5-star review received.</div>
                     <div class="notification-time">Yesterday</div>
                 </div>
             </div>
-            
             <div class="notification-item hidden">
                 <div class="notification-icon-small">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -386,9 +463,21 @@
                     </svg>
                 </div>
                 <div class="notification-content">
-                    <div class="notification-title">Meeting Reminder</div>
-                    <div class="notification-message">Team meeting scheduled for 3:00 PM today.</div>
+                    <div class="notification-title">Payment Received</div>
+                    <div class="notification-message">Payment processed successfully.</div>
                     <div class="notification-time">2 days ago</div>
+                </div>
+            </div>
+            <div class="notification-item hidden">
+                <div class="notification-icon-small">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                    </svg>
+                </div>
+                <div class="notification-content">
+                    <div class="notification-title">System Update</div>
+                    <div class="notification-message">New update available.</div>
+                    <div class="notification-time">3 days ago</div>
                 </div>
             </div>
         </div>
@@ -419,17 +508,20 @@
                 notificationPanel.classList.remove('active');
                 overlay.classList.remove('active');
                 document.body.style.overflow = 'auto';
+                
+                // Reset to initial state when panel closes
                 resetNotifications();
             }
             
             closePanel.addEventListener('click', closeNotificationPanel);
             overlay.addEventListener('click', closeNotificationPanel);
             
-            // Notification click handler
+            // Close panel when clicking on a notification item
             const notificationItems = document.querySelectorAll('.notification-item');
             notificationItems.forEach(item => {
                 item.addEventListener('click', function() {
                     this.classList.remove('unread');
+                    // Update badge count
                     const badge = document.querySelector('.notification-badge');
                     const currentCount = parseInt(badge.textContent);
                     if (currentCount > 0) {
@@ -441,23 +533,37 @@
                 });
             });
             
-            // View all notifications
+            // View all notifications button - shows all hidden notifications
             viewAllBtn.addEventListener('click', function() {
+                // Show all hidden notifications
                 const hiddenNotifications = document.querySelectorAll('.notification-item.hidden');
                 hiddenNotifications.forEach(notification => {
                     notification.classList.remove('hidden');
+                    notification.classList.add('visible');
                 });
+                
+                // Expand the list height
+                notificationList.classList.add('expanded');
+                
+                // Hide the button
                 panelFooter.classList.add('hidden');
             });
             
-            // Reset notifications
+            // Reset notifications to initial state
             function resetNotifications() {
+                // Hide notifications beyond the first 3
                 const allNotifications = document.querySelectorAll('.notification-item');
                 allNotifications.forEach((notification, index) => {
                     if (index >= 3) {
                         notification.classList.add('hidden');
+                        notification.classList.remove('visible');
                     }
                 });
+                
+                // Reset list height
+                notificationList.classList.remove('expanded');
+                
+                // Show the button again
                 panelFooter.classList.remove('hidden');
             }
         });
