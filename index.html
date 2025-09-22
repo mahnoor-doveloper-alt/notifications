@@ -126,12 +126,12 @@
         .notification-list {
             flex: 1;
             overflow-y: auto;
-            padding: 8px 0;
+            padding: 10px 0;
             max-height: 37vh;
         }
 
         .notification-list.expanded {
-            max-height: 56vh;
+            max-height: 60vh;
         }
 
         .notification-item {
@@ -257,13 +257,9 @@
             }
             
             .notification-panel {
-
                 max-width: 280px;
                 right: -280px;
-                height: auto; 
-    max-height: 90vh;  /* keep a max-height so it doesn’t overflow */
-    display: flex;
-    flex-direction: column;
+                height: 80vh;
                 top: 50%;
                 transform: translateY(-50%);
             }
@@ -292,10 +288,6 @@
             
             .notification-list {
                 max-height: 65vh;
-                /* let list auto-size */
-    flex: 1;
-    max-height: none;
-    overflow-y: auto; /* keep scrolling if too many */
             }
             
             .panel-footer {
@@ -324,7 +316,7 @@
             .notification-panel {
                 max-width: 280px;
                 right: -280px;
-                
+                height: 60vh;
                 top: 50%;
             }
             
@@ -352,7 +344,6 @@
             
             .notification-list {
                 max-height: 45vh;
-                
             }
             
             .notification-list.expanded {
@@ -380,10 +371,7 @@
             .notification-panel {
                 max-width: 300px;
                 right: -300px;
-                height: auto; 
-    max-height: 90vh;  /* keep a max-height so it doesn’t overflow */
-    display: flex;
-    flex-direction: column;
+                height: 70vh;
             }
             
             .notification-panel.active {
@@ -579,16 +567,6 @@
                 panelFooter.classList.remove('hidden');
             }
         });
-        // Open notification panel
-function openPanel() {
-    notificationPanel.classList.add('active');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-notificationIcon.addEventListener('click', openPanel);
-notificationIcon.addEventListener('touchstart', openPanel);
-
     </script>
 </body>
 </html>
-
