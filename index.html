@@ -257,12 +257,13 @@
             }
             
             .notification-panel {
+
                 max-width: 280px;
                 right: -280px;
                 height: auto; 
-                max-height: 90vh;  
-                display: flex;
-                flex-direction: column;
+    max-height: 90vh;  /* keep a max-height so it doesn’t overflow */
+    display: flex;
+    flex-direction: column;
                 top: 50%;
                 transform: translateY(-50%);
             }
@@ -291,6 +292,10 @@
             
             .notification-list {
                 max-height: 65vh;
+                /* let list auto-size */
+    flex: 1;
+    max-height: none;
+    overflow-y: auto; /* keep scrolling if too many */
             }
             
             .panel-footer {
@@ -305,67 +310,81 @@
         }
 
         /* Tablet Styles (768px to 1024px) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .notification-container {
-                top: 25px;
-                left: 25px;
-            }
-            
-            .notification-icon {
-                width: 50px;
-                height: 50px;
-            }
-            
-            .notification-panel {
-                max-width: 280px;
-                right: -280px;
-                height: auto; 
-                max-height: 90vh;  /* keep a max-height so it doesn’t overflow */
-                display: flex;
-              flex-direction: column;
-                top: 50%;
-            }
-            
-            .notification-panel.active {
-                right: 25px;
-            }
-            
-            .notification-item {
-                padding: 9px 11px;
-            }
-            
-            .panel-header {
-                padding: 11px 13px;
-            }
-            
-            .panel-header h2 {
-                font-size: 15px;
-            }
-            
-            .notification-icon-small {
-                width: 30px;
-                height: 30px;
-                margin-right: 9px;
-            }
-            
-            .notification-list {
-                max-height: 45vh;
-            }
-            
-            .notification-list.expanded {
-                max-height: 50vh;
-            }
-            
-            .panel-footer {
-                padding: 4px 12px;
-            }
-            
-            .view-all-btn {
-                padding: 3px 7px;
-                font-size: 11px;
-                height: 26px;
-            }
-        }
+       /* Tablet Styles (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .notification-container {
+        top: 25px;
+        left: 25px;
+    }
+
+    /* Bell icon thoda bara */
+    .notification-icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* Panel full height right side */
+    .notification-panel {
+        max-width: 320px;     /* thoda bara width */
+        right: -320px;
+        height: 100vh;
+        top: 0;
+        transform: none;
+        border-radius: 0;
+    }
+    .notification-panel.active {
+        right: 0;
+    }
+
+    /* Items thoda bara padding */
+    .notification-item {
+        padding: 12px 14px;
+    }
+
+    .panel-header {
+        padding: 14px 16px;
+    }
+
+    .panel-header h2 {
+        font-size: 17px; /* heading bara */
+    }
+
+    .notification-icon-small {
+        width: 36px;
+        height: 36px;
+        margin-right: 12px;
+    }
+
+    /* Notification list fill kare */
+    .notification-list {
+        flex: 1;
+        max-height: none; /* auto grow */
+        overflow-y: auto;
+    }
+
+    .panel-footer {
+        padding: 8px 14px;
+    }
+
+    /* Button bara */
+    .view-all-btn {
+        padding: 6px 10px;
+        font-size: 14px;
+        height: 32px;
+    }
+
+    /* Text sizes thoda bara */
+    .notification-title {
+        font-size: 15px;
+    }
+    .notification-message {
+        font-size: 13px;
+    }
+    .notification-time {
+        font-size: 11px;
+    }
+}
+
 
         /* Desktop Styles (1025px and above) */
         @media (min-width: 1025px) {
@@ -397,6 +416,13 @@
                 height: 28px;
             }
         }
+
+        .notification-list {
+    /* let list auto-size */
+    flex: 1;
+    max-height: none;
+    overflow-y: auto; /* keep scrolling if too many */
+}
     </style>
 </head>
 <body>
@@ -579,4 +605,3 @@
     </script>
 </body>
 </html>
-
